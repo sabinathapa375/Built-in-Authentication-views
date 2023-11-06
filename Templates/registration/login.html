@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Log In {% endblock title %}</head>
+<body>
+    
+    {% block content %}
+    <div class="center">
+        <h1>Log In</h1>
+    {% if form.errors %}
+    <p>
+        Check your username and password
+    </p>
+    {% else %}
+    <p>
+        Use the following form to login.
+    </p>
+
+    {% endif %}
+
+    <form action="{% url "login" %}" method ="post" class="card">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next}}">
+
+        <p>
+            <input type="submit" value="Log-in" class="btn btn-primary full-width">
+        </p>
+        <p>Forgot your password? <a href="{% url "password_reset" %}">Reset Here</a></p>
+        <p>Don't have an account? <a href="{% url "register" %}">Register Here</a></p>
+    </form>
+    
+    </div>
+    {% endblock content %}
+</body>
+</html>

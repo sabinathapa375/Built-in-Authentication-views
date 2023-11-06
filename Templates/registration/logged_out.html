@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Out</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Logged Out</h1>
+    <h3>
+        You have succesfully logged out.<br>
+       
+    </h3>
+    <h5> Do you want to again login to your page? <br></h5>
+    <p >  You can <a href="{% url "login" %}">login again here</a></p>
+    {% csrf_token %}
+    {% endblock content %}
+</body>
+</html>
